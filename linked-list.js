@@ -35,7 +35,21 @@ class LinkedList {
 
   /** unshift(val): add new value to start of list. */
 
-  unshift(val) {}
+  unshift(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.length += 1;
+      console.log("If no first value, add to head and tail.");
+      return;
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length += 1;
+    console.log("If first value, assign to newNode.next");
+    return;
+  }
 
   /** pop(): return & remove last item. */
 
@@ -67,7 +81,3 @@ class LinkedList {
 }
 
 module.exports = LinkedList;
-
-let lst = new LinkedList();
-lst.push(5);
-console.log(lst);
