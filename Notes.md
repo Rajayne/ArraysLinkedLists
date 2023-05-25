@@ -75,7 +75,7 @@ class LinkedList {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.head = null;
+    this.tail = null;
   }
   append(val) {
     const newNode = new Node(val);
