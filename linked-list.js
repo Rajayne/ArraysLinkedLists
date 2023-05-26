@@ -106,7 +106,15 @@ class LinkedList {
 
   /** getAt(idx): get val at idx. */
 
-  getAt(idx) {}
+  getAt(idx) {
+    let count = 0;
+    let item = this.head;
+    while (count !== idx) {
+      item = item.next;
+      count += 1;
+    }
+    return item.val;
+  }
 
   /** setAt(idx, val): set val at idx to val */
 
@@ -126,16 +134,3 @@ class LinkedList {
 }
 
 module.exports = LinkedList;
-let lst = new LinkedList([]);
-lst.push(5);
-lst.push(10);
-
-console.log(lst.shift()); // 5
-console.log(lst.head); // 10
-console.log(lst.tail.val); // 10
-console.log(lst.length); // 1
-
-console.log(lst.shift()); // 10
-console.log(lst.tail); // null
-console.log(lst.head); // null
-console.log(lst.length); // 0
