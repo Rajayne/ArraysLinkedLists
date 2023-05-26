@@ -57,7 +57,7 @@ class LinkedList {
   /** pop(): return & remove last item. */
   pop() {
     const lastItem = this.tail;
-    if (this.tail === null) {
+    if (lastItem === null) {
       console.log("If last item is null, return -1");
       return -1;
     }
@@ -81,7 +81,28 @@ class LinkedList {
   }
 
   /** shift(): return & remove first item. */
-  shift() {}
+  shift() {
+    const firstItem = this.head;
+    if (firstItem === null) {
+      console.log("If first item is null, return -1");
+      return -1;
+    }
+    const secondItem = firstItem.next;
+    if (secondItem === null) {
+      this.head = null;
+      this.tail = null;
+      this.length -= 1;
+      console.log(
+        "If secondItem null, set head/tail null return firstItem val."
+      );
+      return firstItem.val;
+    }
+    secondItem.back = null;
+    this.head = secondItem;
+    this.length -= 1;
+    console.log("Set secondItem.back to null and return firstItem val");
+    return firstItem.val;
+  }
 
   /** getAt(idx): get val at idx. */
 
@@ -105,3 +126,16 @@ class LinkedList {
 }
 
 module.exports = LinkedList;
+let lst = new LinkedList([]);
+lst.push(5);
+lst.push(10);
+
+console.log(lst.shift()); // 5
+console.log(lst.head); // 10
+console.log(lst.tail.val); // 10
+console.log(lst.length); // 1
+
+console.log(lst.shift()); // 10
+console.log(lst.tail); // null
+console.log(lst.head); // null
+console.log(lst.length); // 0
