@@ -3,6 +3,7 @@
 class Node {
   constructor(val) {
     this.val = val;
+    this.back = null;
     this.next = null;
   }
 }
@@ -27,6 +28,7 @@ class LinkedList {
       this.length += 1;
       return;
     }
+    newNode.back = this.tail;
     this.tail.next = newNode;
     this.tail = newNode;
     this.length += 1;
@@ -44,6 +46,7 @@ class LinkedList {
       console.log("If no first value, add to head and tail.");
       return;
     }
+    this.head.back = newNode;
     newNode.next = this.head;
     this.head = newNode;
     this.length += 1;
@@ -52,11 +55,32 @@ class LinkedList {
   }
 
   /** pop(): return & remove last item. */
-
-  pop() {}
+  pop() {
+    const lastItem = this.tail;
+    if (this.tail === null) {
+      console.log("If last item is null, return -1");
+      return -1;
+    }
+    const secondLastItem = lastItem.back;
+    if (secondLastItem === null) {
+      this.head = null;
+      this.tail = null;
+      this.length -= 1;
+      console.log(
+        "If secondLastItem null, set head/tail null return lastItem val."
+      );
+      return lastItem.val;
+    }
+    console.log(secondLastItem);
+    secondLastItem.next = null;
+    this.tail = secondLastItem;
+    this.length -= 1;
+    console.log(lastItem.val);
+    console.log("Set secondLastItem.next to null and return lastItem val");
+    return lastItem.val;
+  }
 
   /** shift(): return & remove first item. */
-
   shift() {}
 
   /** getAt(idx): get val at idx. */
