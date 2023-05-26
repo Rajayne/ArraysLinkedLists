@@ -127,7 +127,6 @@ class LinkedList {
   }
 
   /** insertAt(idx, val): add node w/val before idx. */
-
   insertAt(idx, val) {
     let count = 0;
     let item = this.head;
@@ -162,8 +161,31 @@ class LinkedList {
   }
 
   /** removeAt(idx): return & remove item at idx, */
-
-  removeAt(idx) {}
+  removeAt(idx) {
+    let count = 0;
+    let item = this.head;
+    while (count !== idx) {
+      item = item.next;
+      count += 1;
+    }
+    if (item.back && item.next) {
+      let before = item.back;
+      let after = item.next;
+      before.next = after;
+      after.back = before;
+    } else if (item.back === null && item.next === null) {
+      this.head = null;
+      this.tail = null;
+    } else if (item.back === null) {
+      let after = item.next;
+      after.back = null;
+    } else {
+      let before = item.back;
+      before.next = null;
+    }
+    this.length -= 1;
+    return item;
+  }
 
   /** average(): return an average of all values in the list */
 
