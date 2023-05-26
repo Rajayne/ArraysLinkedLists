@@ -105,7 +105,11 @@ describe("setAt", function () {
 
 describe("insertAt", function () {
   it("inserts node and adjusts nearby nodes", function () {
-    let lst = new LinkedList([5, 10, 15, 20]);
+    let lst = new LinkedList([]);
+    lst.push(5);
+    lst.push(10);
+    lst.push(15);
+    lst.push(20);
 
     lst.insertAt(2, 12);
     expect(lst.length).toBe(5);

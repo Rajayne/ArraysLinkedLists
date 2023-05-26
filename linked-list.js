@@ -128,7 +128,38 @@ class LinkedList {
 
   /** insertAt(idx, val): add node w/val before idx. */
 
-  insertAt(idx, val) {}
+  insertAt(idx, val) {
+    let count = 0;
+    let item = this.head;
+    let newNode = new Node(val);
+    if (idx === this.length && item !== null) {
+      newNode.back = this.tail;
+      this.tail.next = newNode;
+      this.tail = newNode;
+    } else if (item === null) {
+      this.head = newNode;
+      this.tail = newNode;
+      newNode.next = null;
+      newNode.back = null;
+    } else {
+      while (count !== idx) {
+        console.log("While Loop:", count, idx, item.val);
+        item = item.next;
+        count += 1;
+      }
+      newNode.next = item;
+      if (item.back) {
+        let beforeItem = item.back;
+        beforeItem.next = newNode;
+        newNode.back = beforeItem;
+      } else {
+        this.head = newNode;
+        newNode.back = null;
+      }
+      item.back = newNode;
+    }
+    this.length += 1;
+  }
 
   /** removeAt(idx): return & remove item at idx, */
 
