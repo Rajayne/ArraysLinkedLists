@@ -105,7 +105,6 @@ class LinkedList {
   }
 
   /** getAt(idx): get val at idx. */
-
   getAt(idx) {
     let count = 0;
     let item = this.head;
@@ -117,8 +116,15 @@ class LinkedList {
   }
 
   /** setAt(idx, val): set val at idx to val */
-
-  setAt(idx, val) {}
+  setAt(idx, val) {
+    let count = 0;
+    let item = this.head;
+    while (count !== idx) {
+      item = item.next;
+      count += 1;
+    }
+    item.val = val;
+  }
 
   /** insertAt(idx, val): add node w/val before idx. */
 

@@ -66,7 +66,9 @@ describe("pop", function () {
 
 describe("shift", function () {
   it("removes node at start and decrements length", function () {
-    let lst = new LinkedList([5, 10]);
+    let lst = new LinkedList([]);
+    lst.push(5);
+    lst.push(10);
 
     expect(lst.shift()).toBe(5);
     expect(lst.tail.val).toBe(10);
@@ -90,7 +92,9 @@ describe("getAt", function () {
 
 describe("setAt", function () {
   it("sets val at index", function () {
-    let lst = new LinkedList([5, 10]);
+    let lst = new LinkedList([]);
+    lst.push(5);
+    lst.push(10);
 
     expect(lst.setAt(0, 1));
     expect(lst.setAt(1, 2));
